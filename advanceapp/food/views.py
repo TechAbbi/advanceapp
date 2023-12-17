@@ -8,6 +8,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from rest_framework import viewsets
 from .serializers import ItemSerializer
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -60,7 +61,7 @@ class AddItemView(CreateView):
     template_name = "food/add.html"
     success_url = reverse_lazy("food:index")
 
-
+@login_required
 def update(request, item_id):
     item = Item.objects.get(pk=item_id)
     form = ItemForm(request.POST or None, instance=item)

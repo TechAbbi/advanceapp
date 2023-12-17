@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from food.views import IndexViewSet
+from user import views as user_view
+from django.contrib.auth import views as authentication_views
+
 router = routers.SimpleRouter()
 router.register("items", IndexViewSet)
 
@@ -25,4 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("food/", include("food.urls")),
     path("info/", include(router.urls)),
+    path("register/", user_view.register, name="register"),
+    path("login/", authentication_views.LoginView.as_view(template_name="user/login.html"), name="login"),
+    path("logout/", user_view.log_out, name="logout"),
 ]
