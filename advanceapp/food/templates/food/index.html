@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<center><h1>Item List</h1></center>
+<hr>
+<br>
+<form method="get">
+    <input type="search" name="item_name">
+    <button type="submit">Search</button>
+</form>
+<br>
+<a href="{% url 'food:add' %}"><button type="button">Add Item</button></a>
+{% for item in item_list %}
+<ul>
+    <li><a href="{% url 'food:details' item.id %}"> <h3>{{item}}</h3></a></li>
+</ul>
+{% endfor %}
+
+<br>
+{% if item_list.has_previous %}
+<a href="?page=1">First</a>
+<a href="?page={{item_list.previous_page_number}}">Previous</a>
+{% endif %}
+
+{{item_list.number}} of {{item_list.paginator.num_pages}}
+
+{% if item_list.has_next %}
+<a href="?page={{item_list.next_page_number}}">Next</a>
+<a href="?page={{item_list.paginator.num_pages}}">Last</a>
+{% endif %}
+</body>
+</html>

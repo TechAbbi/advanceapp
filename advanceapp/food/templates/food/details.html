@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>details</title>
+</head>
+<body>
+<center><h1>Item Details</h1></center>
+<hr>
+<br>
+<a href="{% url 'food:index' %}">Home</a>
+<ul>
+    <li>{{item.name}}</li>
+    <li>{{item.item_desc}}</li>
+    <li>{{item.item_price}}</li>
+</ul>
+Update Item: <a href="{% url 'food:update' item.id %}"><button type="button">Update</button></a><br>
+Delete Item: <a href="{% url 'food:delete' item.id %}"><button type="button">Delete</button> </a>
+<img src="{{item.item_img}}">
+</body>
+</html>

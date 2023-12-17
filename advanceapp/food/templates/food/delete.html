@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<center><h1>Delete Item</h1></center>
+<hr>
+<br>
+<form method="post">
+  {% csrf_token %}
+  <h1> Are you sure , you want to delete the item ,{{item.name}}?</h1>
+  <button type="submit">Confirm</button>
+
+</form>
+
+</body>
+</html>
